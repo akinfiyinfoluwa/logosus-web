@@ -91,10 +91,10 @@ export default function Hero() {
             variants={imageVariants}
           >
             <img
-              src="https://farmui.vercel.app/dashboard.png"
-              className="w-full shadow-lg rounded-lg border"
-              alt="Digital solutions dashboard preview"
-            />
+                src="/image/hero.svg"
+                className="w-full"
+                alt="Digital solutions dashboard preview"
+              />
           </motion.div>
         </motion.div>
       </section>
