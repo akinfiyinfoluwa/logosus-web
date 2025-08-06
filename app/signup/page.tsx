@@ -10,22 +10,22 @@ export default function SignUpPage() {
           <Link href="/" className="flex items-center mb-8">
             <PieChartIcon className="h-8 w-8 text-primary" />
             <span className="ml-2 text-xl font-bold flex items-center">
-              <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Finance
               </span>
-              <span className="text-white">Flow</span>
+              <span className="text-gray-900">Flow</span>
             </span>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl font-semibold text-white">
+            <h1 className="text-3xl font-semibold text-gray-900">
               Create your account
             </h1>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-gray-600">
               Already have an account?{" "}
               <Link
                 href="/signin"
-                className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent hover:opacity-80"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent hover:opacity-80"
               >
                 Sign in
               </Link>{" "}
@@ -38,7 +38,7 @@ export default function SignUpPage() {
       </div>
 
       <div className="hidden lg:block lg:w-1/2 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-teal-900/20 to-emerald-900/20">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-blue-100/20 to-blue-200/20">
           <div className="absolute inset-0 backdrop-blur-[100px]" />
         </div>
       </div>

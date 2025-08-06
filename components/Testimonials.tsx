@@ -31,7 +31,7 @@ const testimonials = [
   [
     {
       content:
-        "The automation features of FinanceFlow have made managing my company’s finances a breeze. The time saved has been invaluable, and I no longer stress over tax season.",
+        "The automation features of FinanceFlow have made managing my company's finances a breeze. The time saved has been invaluable, and I no longer stress over tax season.",
       author: {
         name: "Leland Kiehn",
         role: "Founder of Kiehn and Sons",
@@ -53,7 +53,7 @@ const testimonials = [
   [
     {
       content:
-        "FinanceFlow made it so easy to automate my company’s financial workflows. I’m no longer bogged down with administrative tasks, and I feel much more confident in my financial management.",
+        "FinanceFlow made it so easy to automate my company's financial workflows. I'm no longer bogged down with administrative tasks, and I feel much more confident in my financial management.",
       author: {
         name: "Peter Renolds",
         role: "Founder of West Inc",
@@ -122,13 +122,13 @@ export default function Testimonials() {
       <Container>
         <AnimatedElement>
           <div className="mx-auto max-w-2xl md:text-center">
-            <h2 className="font-geist text-3xl tracking-tighter text-gray-100 sm:text-6xl">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-200">
+            <h2 className="font-geist text-3xl tracking-tighter text-gray-900 sm:text-6xl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
                 Loved
               </span>{" "}
               by businesses worldwide.
             </h2>
-            <p className="mt-4 text-lg tracking-tight text-gray-300 font-geist">
+            <p className="mt-4 text-lg tracking-tight text-gray-700 font-geist">
               Our software is so simple that people can&apos;t help but fall in
               love with it. Simplicity is easy when you just skip tons of
               mission-critical features.
@@ -147,19 +147,19 @@ export default function Testimonials() {
                     key={testimonialIndex}
                     delay={columnIndex * 0.2 + testimonialIndex * 0.1}
                   >
-                    <figure className="relative rounded-2xl bg-transparent transform-gpu [border:1px_solid_rgba(255,255,255,.1)] [box-shadow:0_-20px_80px_-20px_#8686f01f_inset] p-6 shadow-xl">
-                      <QuoteIcon className="absolute left-6 top-6 fill-slate-950" />
+                    <figure className="relative rounded-2xl bg-white transform-gpu [border:1px_solid_rgba(0,0,0,.1)] [box-shadow:0_-20px_80px_-20px_#0000001f_inset] p-6 shadow-xl">
+                      <QuoteIcon className="absolute left-6 top-6 fill-blue-600 opacity-10" />
                       <blockquote className="relative">
-                        <p className="text-lg tracking-tight text-gray-100">
+                        <p className="text-lg tracking-tight text-gray-900">
                           {testimonial.content}
                         </p>
                       </blockquote>
-                      <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100/10 pt-6">
+                      <figcaption className="relative mt-6 flex items-center justify-between border-t border-gray-200 pt-6">
                         <div>
-                          <div className="font-display text-base text-gray-100">
+                          <div className="font-display text-base text-gray-900">
                             {testimonial.author.name}
                           </div>
-                          <div className="mt-1 text-sm text-slate-500">
+                          <div className="mt-1 text-sm text-gray-500">
                             {testimonial.author.role}
                           </div>
                         </div>

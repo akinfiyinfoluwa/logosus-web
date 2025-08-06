@@ -19,9 +19,8 @@ export default function Footer() {
           <div className="relative">
             <h2 className="mb-4 text-3xl font-bold tracking-tight font-satoshi">
               Stay Connected
-            </h2>
-            <p className="mb-6 text-muted-foreground font-inter">
-              Join our newsletter for the latest updates and exclusive offers.
+            </h2><p className="mb-6 text-muted-foreground font-inter">
+              Get updates on new digital solutions and exclusive project insights.
             </p>
             <form className="relative">
               <Input
@@ -43,49 +42,47 @@ export default function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-semibold font-satoshi">
               Quick Links
-            </h3>
-            <nav className="space-y-2 text-sm font-inter">
+            </h3><nav className="space-y-2 text-sm font-inter">
               <a
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
-                Home
+                Websites
               </a>
               <a
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
-                About Us
+                Mobile Apps
               </a>
               <a
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
-                Services
+                Web Applications
               </a>
               <a
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
-                Products
+                Chrome Extensions
               </a>
               <a
                 href="#"
                 className="block transition-colors hover:text-primary"
               >
-                Contact
+                Custom Solutions
               </a>
             </nav>
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold font-satoshi">
               Contact Us
-            </h3>
-            <address className="space-y-2 text-sm not-italic font-inter">
-              <p>123 Innovation Street</p>
-              <p>Tech City, TC 12345</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Email: hello@example.com</p>
+            </h3><address className="space-y-2 text-sm not-italic font-inter">
+              <p>Digital Solutions Hub</p>
+              <p>Remote-First Company</p>
+              <p>Phone: (555) 123-LOGO</p>
+              <p>Email: hello@logosus.com</p>
             </address>
           </div>
           <div className="relative">
@@ -164,9 +161,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
-          <p className="text-sm text-muted-foreground font-inter">
-            © 2024 Your Company. All rights reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row"><p className="text-sm text-muted-foreground font-inter">
+            © 2024 Logosus. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm font-inter">
             <a href="#" className="transition-colors hover:text-primary">

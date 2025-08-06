@@ -67,19 +67,19 @@ export default function Hero() {
             }}
             className="space-y-5 max-w-3xl mx-auto text-center mb-10"
           >
-            <motion.h1 variants={itemVariants} className="text-sm text-gray-400 group font-satoshi mx-auto px-5 py-2 bg-gradient-to-tr from-zinc-300/5 via-gray-400/5 to-transparent border-[2px] border-white/5 rounded-3xl w-fit">
-              Automate your financial workflows
+            <motion.h1 variants={itemVariants} className="text-sm text-gray-600 group font-satoshi mx-auto px-5 py-2 bg-gradient-to-tr from-blue-50/50 via-blue-100/50 to-transparent border-[2px] border-blue-200/20 rounded-3xl w-fit">
+              Building Tools for the Future-Minded
             </motion.h1>
 
-            <motion.h2 variants={itemVariants} className="text-4xl tracking-tighter font-geist bg-clip-text bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] text-transparent mx-auto md:text-6xl">
-              Simplify your finance operations with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-200">
-                automated solutions.
+            <motion.h2 variants={itemVariants} className="text-4xl tracking-tighter font-geist bg-clip-text bg-[linear-gradient(180deg,_#1f2937_0%,_rgba(31,_41,_55,_0.00)_202.08%)] text-transparent mx-auto md:text-6xl">
+              Turn ideas into{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
+                software realities
               </span>
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-gray-300 font-inter">
-              Streamline your accounting, reduce human error, and save time with our intuitive platform designed for businesses of all sizes.
+            <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-gray-700 font-inter">
+              Smart, lightweight, and scalable technology for individuals, startups, and businesses. We deliver websites, mobile apps, web applications, and custom digital solutions with rapid execution and beautiful design.
             </motion.p>
             <motion.div variants={itemVariants} className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
               <GradientButton content="Get started" />
@@ -93,7 +93,7 @@ export default function Hero() {
             <img
               src="https://farmui.vercel.app/dashboard.png"
               className="w-full shadow-lg rounded-lg border"
-              alt="Financial dashboard preview"
+              alt="Digital solutions dashboard preview"
             />
           </motion.div>
         </motion.div>

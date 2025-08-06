@@ -24,7 +24,7 @@ export function SignInForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-gray-300">
+        <Label htmlFor="email" className="text-gray-700">
           Email address
         </Label>
         <Input
@@ -35,12 +35,12 @@ export function SignInForm() {
           autoComplete="email"
           autoCorrect="off"
           disabled={isLoading}
-          className="bg-gray-900/50 border-gray-800 text-white placeholder:text-gray-400"
+          className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
           required
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password" className="text-gray-300">
+        <Label htmlFor="password" className="text-gray-700">
           Password
         </Label>
         <Input
@@ -49,13 +49,13 @@ export function SignInForm() {
           type="password"
           autoComplete="current-password"
           disabled={isLoading}
-          className="bg-gray-900/50 border-gray-800 text-white placeholder:text-gray-400"
+          className="bg-white border-gray-300 text-gray-900 placeholder:text-gray-500"
           required
         />
       </div>
       <Button 
         disabled={isLoading}
-        className="w-full bg-gradient-to-r from-teal-400 to-emerald-400 text-gray-900 hover:opacity-90"
+        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
       >
         {isLoading ? (
           "Signing in..."

@@ -20,13 +20,13 @@ export default function CTA() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center">
           <AnimatedText>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl font-satoshi">
-              Experience the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-200">Financial Automation</span> Today
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 max-w-4xl font-satoshi">
+              Ready to Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">Digital Vision</span>?
             </h2>
           </AnimatedText>
           <AnimatedText delay={0.2}>
-            <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl font-satoshi">
-              The first financial tool you&apos;ll love. And the last one you&apos;ll ever need.
+            <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl font-satoshi">
+              Tech should serve vision, not complicate it. You own what you build.
             </p>
           </AnimatedText>
           <AnimatedText delay={0.4}>
