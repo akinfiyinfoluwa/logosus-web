@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface AnimatedElementProps {
   children: React.ReactNode;
@@ -172,9 +173,11 @@ export default function Pricing() {
                         </div>
                       </div>
                     </div>
-                    <Button className="gap-4 bg-white text-blue-700 hover:bg-blue-50 transition-all duration-300">
-                      Get started <MoveRight className="w-4 h-4" />
-                    </Button>
+                    <Link href="/contact">
+                      <Button className="gap-4 bg-white text-blue-700 hover:bg-blue-50 transition-all duration-300">
+                        Get started <MoveRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

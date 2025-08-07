@@ -68,7 +68,7 @@ export default function Footer() {
                 Contact
               </a>
               <a
-                href="/signup"
+                href="/contact"
                 className="block transition-colors hover:text-primary"
               >
                 Get Started

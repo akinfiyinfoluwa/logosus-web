@@ -50,7 +50,6 @@ export default function Nav() {
       document.removeEventListener('click', handleClickOutside)
     }
   }, [isMobileMenuOpen])
-
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/70 backdrop-blur-lg border-b border-gray-200' : 'bg-transparent'
@@ -89,7 +88,7 @@ export default function Nav() {
             <Button 
               className="hidden md:block bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
             >
-              <Link href={'/signup'}>Get Started</Link>
+              <Link href={'/contact'}>Get Started</Link>
             </Button>
             
             {/* Mobile Menu Button */}
@@ -168,7 +167,7 @@ export default function Nav() {
                   className="w-full bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transition-all duration-300 ease-out transform hover:scale-[1.02] hover:shadow-lg shadow-blue-500/25 rounded-xl py-3 font-semibold"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Link href={'/signup'} className="flex items-center justify-center space-x-2">
+                  <Link href={'/contact'} className="flex items-center justify-center space-x-2">
                     <span>Get Started</span>
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
