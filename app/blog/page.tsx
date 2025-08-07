@@ -143,6 +143,49 @@ const BlogPage: React.FC = () => {
   );
 };
 
+const AuthorAvatar: React.FC<{ name: string }> = ({ name }) => {
+  // Generate initials from the author's name
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase())
+      .join('')
+      .slice(0, 2); // Take only first 2 initials
+  };
+
+  // Generate a consistent color based on the name
+  const getAvatarColor = (name: string) => {
+    const colors = [
+      'bg-blue-500',
+      'bg-green-500',
+      'bg-purple-500',
+      'bg-pink-500',
+      'bg-indigo-500',
+      'bg-yellow-500',
+      'bg-red-500',
+      'bg-teal-500',
+      'bg-orange-500',
+      'bg-cyan-500'
+    ];
+    
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    
+    return colors[Math.abs(hash) % colors.length];
+  };
+
+  const initials = getInitials(name);
+  const colorClass = getAvatarColor(name);
+
+  return (
+    <div className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white font-medium text-sm`}>
+      {initials}
+    </div>
+  );
+};
+
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl border border-gray-100">
@@ -169,14 +212,7 @@ const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
         
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img 
-              src={post.authorImageUrl} 
-              alt={post.author} 
-              className="w-10 h-10 rounded-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author)}&background=3b82f6&color=fff`;
-              }}
-            />
+            <AuthorAvatar name={post.author} />
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-900 font-satoshi">{post.author}</p>
             </div>
