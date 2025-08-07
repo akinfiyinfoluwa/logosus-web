@@ -37,13 +37,25 @@ export default function Nav() {
               </span>
             </Link>
           </div>
+          
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Home
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">
+              About
+            </Link>
+            <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Blog
+            </Link>
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Contact
+            </Link>
+          </div>
+          
           <div className="flex items-center">
-            <Button 
-              variant="ghost" 
-              className="mr-2 text-gray-800 hover:text-gray-900 hover:bg-gray-100"
-            >
-              <Link href={'/signin'}>Sign In</Link>
-            </Button>
+      
             <Button 
               className="bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
             >

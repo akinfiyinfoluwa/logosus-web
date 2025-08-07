@@ -44,34 +44,34 @@ export default function Footer() {
               Quick Links
             </h3><nav className="space-y-2 text-sm font-inter">
               <a
-                href="#"
+                href="/"
                 className="block transition-colors hover:text-primary"
               >
-                Websites
+                Home
               </a>
               <a
-                href="#"
+                href="/about"
                 className="block transition-colors hover:text-primary"
               >
-                Mobile Apps
+                About Us
               </a>
               <a
-                href="#"
+                href="/blog"
                 className="block transition-colors hover:text-primary"
               >
-                Web Applications
+                Blog
               </a>
               <a
-                href="#"
+                href="/contact"
                 className="block transition-colors hover:text-primary"
               >
-                Chrome Extensions
+                Contact
               </a>
               <a
-                href="#"
+                href="/signup"
                 className="block transition-colors hover:text-primary"
               >
-                Custom Solutions
+                Get Started
               </a>
             </nav>
           </div>

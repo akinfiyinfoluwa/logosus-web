@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import MarqueeLogoDemo from "@/components/Logos";
 import BlogSection from "@/components/Blog";
 import Portfolio from "@/components/Portfolio";
+import Services from "@/components/Services";
 
 const Home = () => {
   return (
@@ -27,6 +28,10 @@ const Home = () => {
 
       <section className="py-20">
         <Feature />
+      </section>
+
+      <section className="py-20">
+        <Services />
       </section>
 
       <section className="py-20">

@@ -231,3 +231,4 @@ const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 };
 
 export default BlogPage;
+
