@@ -7,6 +7,7 @@ export interface BlogPost {
   date: string;
   authorImageUrl: string;
   post_url: string;
+  articleBody?: string; // Optional field for markdown content
 }
 
 export const dummyBlogData: BlogPost[] = [
@@ -17,7 +18,105 @@ export const dummyBlogData: BlogPost[] = [
     author: "John Doe",
     date: "2024-01-15",
     authorImageUrl: "/image/author1.jpeg",
-    post_url: "/blog/future-of-web-development"
+    post_url: "/blog/future-of-web-development",
+    //article in markdown format
+    articleBody: ` ![Future of Web Development](https://images.unsplash.com/photo-1754430543609-aae159c530ef?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
+Web development is evolving at an unprecedented pace. With new technologies, frameworks, and user expectations shaping the digital landscape, developers need to stay ahead of the curve to remain relevant. In 2024, several trends are set to redefine how we design, build, and deliver web experiences.
+
+## 1. **AI-Powered Development**
+
+Artificial Intelligence (AI) is no longer just a buzzword—it’s transforming web development. From AI-assisted code generation tools to intelligent debugging and personalized user experiences, AI is enabling developers to work faster and smarter.
+
+**Examples:**
+- ChatGPT for code suggestions
+- GitHub Copilot for real-time coding assistance
+- AI-powered chatbots for customer support
+
+**Impact:** Reduced development time, enhanced code quality, and highly personalized user interfaces.
+
+---
+
+## 2. **Progressive Web Apps (PWAs)**
+
+PWAs combine the best of web and mobile apps, offering fast, offline-capable, and installable experiences without the overhead of app stores.
+
+**Key Advantages:**
+- Improved performance
+- Offline access
+- Native app-like feel
+
+**Why It Matters in 2024:** With increased mobile internet usage, PWAs will continue to bridge the gap between native and web apps, especially for businesses targeting emerging markets.
+
+---
+
+## 3. **WebAssembly (Wasm)**
+
+WebAssembly allows developers to run high-performance code in browsers, enabling complex applications such as 3D rendering, gaming, and video editing directly on the web.
+
+**Benefits:**
+- Near-native execution speed
+- Language flexibility (C, C++, Rust, etc.)
+- Better performance for computation-heavy tasks
+
+**Trend Forecast:** Expect more web apps harnessing Wasm for performance-critical features.
+
+---
+
+## 4. **Headless and API-First Architecture**
+
+Headless CMS and API-first design separate the front-end from the back-end, giving developers greater flexibility in delivering content across multiple platforms.
+
+**Popular Tools:**
+- Strapi
+- Contentful
+- Sanity
+
+**Why It’s Growing:** Businesses want to deliver consistent content across web, mobile, IoT, and even AR/VR experiences.
+
+---
+
+## 5. **Motion UI and Microinteractions**
+
+Subtle animations, transitions, and microinteractions enhance user engagement and guide navigation without overwhelming the experience.
+
+**2024 Focus:**
+- Lightweight animations
+- Performance-friendly transitions
+- Accessibility-conscious designs
+
+---
+
+## 6. **Cybersecurity-First Development**
+
+As cyber threats grow, security is no longer a post-development consideration. In 2024, security will be integrated into every stage of the web development lifecycle.
+
+**Security Trends:**
+- Zero-trust architecture
+- Built-in encryption
+- Regular vulnerability scanning
+
+---
+
+## 7. **Sustainable Web Development**
+
+With environmental concerns gaining attention, developers are focusing on building energy-efficient websites.
+
+**Sustainable Practices:**
+- Optimized code and assets
+- Efficient hosting solutions
+- Minimalist design to reduce data transfer
+
+---
+
+## Conclusion
+
+The future of web development in 2024 is about **speed, performance, personalization, and sustainability**. Developers who embrace these trends will not only create cutting-edge experiences but also future-proof their skills in a competitive industry.
+
+---
+
+**Pro Tip:** Stay curious. The tools and frameworks will change, but your ability to adapt and learn will be your biggest asset in the evolving world of web development.
+ `
   },
   {
     id: 2,

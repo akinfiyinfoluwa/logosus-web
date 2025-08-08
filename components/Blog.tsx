@@ -107,7 +107,18 @@ const AuthorAvatar: React.FC<{ name: string }> = ({ name }) => {
   );
 };
 
+const getSlugFromUrl = (url: string): string | null => {
+  try {
+    const parts = url.split('/').filter(Boolean);
+    return parts[parts.length - 1] || null;
+  } catch {
+    return null;
+  }
+};
+
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const slug = getSlugFromUrl(post.post_url);
+  const linkHref = post.articleBody && slug ? `/blog/${slug}` : '/blog';
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <div className="p-6">
@@ -119,7 +130,7 @@ const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
           })}
         </p>
         <h3 className="mt-2 text-xl font-geist tracking-tighter text-gray-900">
-          <a href={post.post_url} className="hover:text-blue-600 transition-colors">{post.title}</a>
+          <a href={linkHref} className="hover:text-blue-600 transition-colors">{post.title}</a>
         </h3>
         <p className="mt-3 text-base text-gray-700 font-inter">{post.description}</p>
         <div className="mt-4 flex items-center">
