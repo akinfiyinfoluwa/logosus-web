@@ -16,7 +16,7 @@ export default function NewsletterAlert({ isOpen, onClose }: NewsletterAlertProp
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+  const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -30,20 +30,10 @@ export default function NewsletterAlert({ isOpen, onClose }: NewsletterAlertProp
     onClose();
     // You could show a success message here
   };
+ 
 
-  const handleMessageSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Here you would typically send the message to your backend
-    console.log("Contact message:", { name, email, message });
-    
-    setIsSubmitting(false);
-    onClose();
-    // You could show a success message here
+  const goToPage =() => {
+    window.location.href = "https://example.com/subscribe"; // Replace with your actual subscription page URL
   };
 
   const flipToMessage = () => {
@@ -101,31 +91,19 @@ export default function NewsletterAlert({ isOpen, onClose }: NewsletterAlertProp
                         </p>
                       </div>
 
-                      <form onSubmit={handleNewsletterSubmit} className="space-y-4">
-                        <div>
-                          <input
-                            type="email"
-                            placeholder="Enter your email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                          />
-                        </div>
+                      <form className="space-y-4">
                         
                         <button
-                          type="submit"
-                          disabled={isSubmitting}
+                          type="button"
+                          onClick={goToPage}
                           className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                          {isSubmitting ? (
-                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : (
+                         
                             <>
                               <Send size={18} />
                               Subscribe
                             </>
-                          )}
+                        
                         </button>
                       </form>
 
