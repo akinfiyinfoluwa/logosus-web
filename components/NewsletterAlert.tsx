@@ -24,7 +24,7 @@ export default function NewsletterAlert({ isOpen, onClose }: NewsletterAlertProp
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Here you would typically send the email to your newsletter service
-    console.log("Newsletter subscription:", { email });
+    console.log("Contact subscription:", { email });
     
     setIsSubmitting(false);
     onClose();
