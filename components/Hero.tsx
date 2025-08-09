@@ -72,9 +72,9 @@ export default function Hero() {
             </motion.h1>
 
             <motion.h2 variants={itemVariants} className="text-4xl tracking-tighter font-geist bg-clip-text bg-[linear-gradient(180deg,_#1f2937_0%,_rgba(31,_41,_55,_0.00)_202.08%)] text-transparent mx-auto md:text-6xl">
-              Turn ideas into{" "}
+              Top Software development Agency{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
-                software realities
+                with cutting-edge solutions
               </span>
             </motion.h2>
 
