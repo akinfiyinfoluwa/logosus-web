@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { dummyBlogData, BlogPost } from '../../lib/blogs';
+import { BlogPost, dummyBlogData } from '@/lib/blogs';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 

@@ -2,21 +2,13 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { dummyBlogData, BlogPost } from '@/lib/blogs';
+import { getBlogPostBySlug, getPublishedBlogPosts } from '@/lib/blogs-server';
+import { BlogPost } from '@/lib/blogs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
 interface BlogPostPageProps {
   params: { slug: string };
-}
-
-function getSlugFromUrl(url: string): string | null {
-  try {
-    const parts = url.split('/').filter(Boolean);
-    return parts[parts.length - 1] || null;
-  } catch {
-    return null;
-  }
 }
 
 function getRelatedPosts(currentPostId: number, allPosts: BlogPost[], limit: number = 3): BlogPost[] {
@@ -52,22 +44,16 @@ function RelatedPosts({ relatedPosts }: { relatedPosts: BlogPost[] }) {
                 className="w-12 h-12 rounded-full object-cover flex-shrink-0"
               />
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-geist tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-200 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 font-inter text-sm mb-3 line-clamp-2">
+                <p className="text-sm text-gray-600 mt-1 line-clamp-2">
                   {post.description}
                 </p>
-                <div className="flex items-center text-sm text-gray-500">
-                  <span className="font-inter">{post.author}</span>
+                <div className="flex items-center mt-2 text-xs text-gray-500">
+                  <span>{post.author}</span>
                   <span className="mx-2">•</span>
-                  <span className="font-inter">
-                    {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </span>
+                  <span>{new Date(post.date).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
@@ -78,90 +64,141 @@ function RelatedPosts({ relatedPosts }: { relatedPosts: BlogPost[] }) {
   );
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-
-  //@ts-nocheck
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params;
-
-  const post = dummyBlogData.find((p) => getSlugFromUrl(p.post_url) === slug);
-
-  if (!post || !post.articleBody) {
+  
+  // Fetch the specific blog post from database
+  const post = await getBlogPostBySlug(slug);
+  
+  if (!post) {
     notFound();
   }
 
-  // Get related posts (3 random posts excluding the current one)
-  const relatedPosts = getRelatedPosts(post.id, dummyBlogData, 3);
+  // Fetch all published posts for related posts
+  const allPosts = await getPublishedBlogPosts();
+  const relatedPosts = getRelatedPosts(post.id, allPosts);
 
   return (
     <div className="min-h-screen bg-white">
       <Nav />
-      <main className="pt-24 pb-16">
-        <article className="max-w-3xl mx-auto px-4 md:px-6">
-          <header className="mb-10">
-            <p className="text-sm text-blue-600 font-satoshi bg-blue-50 inline-block px-3 py-1 rounded-full">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-            <h1 className="mt-4 text-3xl md:text-4xl font-geist tracking-tighter text-gray-900">
+      
+      <main className="pt-20">
+        <article className="max-w-3xl mx-auto px-4 md:px-6 py-16">
+          {/* Header */}
+          <header className="mb-8">
+            <h1 className="text-3xl md:text-5xl font-geist tracking-tight text-gray-900 leading-tight mb-6">
               {post.title}
             </h1>
-            <div className="mt-4 text-gray-700 font-inter">By {post.author}</div>
+            
+            <div className="flex items-center space-x-4">
+              <img
+                src={post.authorImageUrl}
+                alt={post.author}
+                className="w-12 h-12 rounded-full object-cover"
+              />
+              <div>
+                <p className="text-gray-900 font-medium">{post.author}</p>
+                <time className="text-gray-600 text-sm">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+            </div>
           </header>
 
-          <div className="prose prose-blue max-w-none">
+          {/* Content */}
+          <div className="prose prose-lg prose-gray max-w-none">
             <ReactMarkdown
               components={{
-                h1: (props: any) => (
-                  <h1 className="text-3xl md:text-4xl font-geist tracking-tighter mt-8 mb-4" {...props} />
+                h1: ({ children, ...props }) => (
+                  <h1 className="text-3xl font-bold text-gray-900 mt-8 mb-4" {...props}>{children}</h1>
                 ),
-                h2: (props: any) => (
-                  <h2 className="text-2xl md:text-3xl font-geist tracking-tight mt-8 mb-3" {...props} />
+                h2: ({ children, ...props }) => (
+                  <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4" {...props}>{children}</h2>
                 ),
-                h3: (props: any) => (
-                  <h3 className="text-xl md:text-2xl font-geist tracking-tight mt-6 mb-3" {...props} />
+                h3: ({ children, ...props }) => (
+                  <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3" {...props}>{children}</h3>
                 ),
-                p: (props: any) => <p className="font-inter leading-7 text-gray-800 my-4" {...props} />,
-                ul: (props: any) => <ul className="list-disc pl-6 my-4 space-y-2" {...props} />,
-                ol: (props: any) => <ol className="list-decimal pl-6 my-4 space-y-2" {...props} />,
-                li: (props: any) => <li className="font-inter text-gray-800" {...props} />,
-                a: (props: any) => (
-                  <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />
+                p: ({ children, ...props }) => (
+                  <p className="text-gray-700 leading-relaxed mb-4" {...props}>{children}</p>
                 ),
-                img: (props: any) => (
-                  // Render markdown images. Use paths under public/ (e.g., /image/xyz.png)
-                  <img className="rounded-lg my-6 mx-auto" loading="lazy" alt={props.alt || ''} {...props} />
+                ul: ({ children, ...props }) => (
+                  <ul className="list-disc pl-6 mb-4 space-y-2" {...props}>{children}</ul>
                 ),
-                code: ({ inline, className, children, ...rest }: any) => {
-                  if (inline) {
-                    return (
-                      <code className={`bg-gray-100 px-1.5 py-0.5 rounded text-sm ${className || ''}`} {...rest}>
-                        {children}
-                      </code>
-                    );
-                  }
-                  return (
-                    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6">
-                      <code className={className} {...rest}>{children}</code>
-                    </pre>
+                ol: ({ children, ...props }) => (
+                  <ol className="list-decimal pl-6 mb-4 space-y-2" {...props}>{children}</ol>
+                ),
+                li: ({ children, ...props }) => (
+                  <li className="text-gray-700" {...props}>{children}</li>
+                ),
+                blockquote: ({ children, ...props }) => (
+                  <blockquote className="border-l-4 border-blue-200 pl-6 py-2 my-6 bg-blue-50 rounded-r-lg" {...props}>
+                    <div className="text-gray-800 italic">{children}</div>
+                  </blockquote>
+                ),
+                code: ({ children, className, ...rest }) => {
+                  const isInline = !className || !className.includes('language-');
+                  return isInline ? (
+                    <code className="bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono" {...rest}>
+                      {children}
+                    </code>
+                  ) : (
+                    <code className="block bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono" {...rest}>
+                      {children}
+                    </code>
                   );
                 },
-                blockquote: (props: any) => (
-                  <blockquote className="border-l-4 border-blue-200 pl-4 italic text-gray-700 my-6" {...props} />
+                pre: ({ children, ...props }) => (
+                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4" {...props}>
+                    {children}
+                  </pre>
                 ),
-                hr: () => <hr className="my-10 border-gray-200" />,
+                a: ({ children, href, ...props }) => (
+                  <a
+                    href={href}
+                    className="text-blue-600 hover:text-blue-800 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    {...props}
+                  >
+                    {children}
+                  </a>
+                ),
+                img: ({ src, alt, ...props }) => (
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="w-full rounded-lg shadow-md my-8"
+                    {...props}
+                  />
+                ),
               }}
             >
-              {post.articleBody}
+              {post.articleBody || post.description}
             </ReactMarkdown>
           </div>
+
+          {/* Back to blog */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+            >
+              <svg className="w-4 h-4 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              Back to Blog
+            </Link>
+          </div>
         </article>
-        
-        {/* Related Posts Section */}
+
+        {/* Related Posts */}
         <RelatedPosts relatedPosts={relatedPosts} />
       </main>
+
       <Footer />
     </div>
   );

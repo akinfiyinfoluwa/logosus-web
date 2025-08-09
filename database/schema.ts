@@ -1,9 +1,9 @@
-import { integer, text, boolean, pgTable } from "drizzle-orm/pg-core";
+import { integer, text, boolean, pgTable, serial } from "drizzle-orm/pg-core";
 
 export const blog = pgTable("blog", {
-  id: integer("id").primaryKey(),
+  id: serial("id").primaryKey(),
   title: text("title").notNull(),
-  content: text("content").notNull(), // main blog content
+  article_body: text("article_body").notNull(), // main blog content
   author: text("author").notNull(),
   date: text("date").notNull(),
   description: text("description").notNull(),

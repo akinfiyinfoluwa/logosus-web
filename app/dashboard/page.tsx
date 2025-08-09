@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { BlogPost, dummyBlogData } from "@/lib/blogs";
@@ -17,10 +17,51 @@ function slugify(input: string): string {
     .replace(/^-|-$/g, "");
 }
 
+// Transform database post to BlogPost format
+function transformDbPost(dbPost: any): BlogPost {
+  return {
+    id: dbPost.id,
+    title: dbPost.title,
+    description: dbPost.description,
+    author: dbPost.author,
+    date: dbPost.date,
+    authorImageUrl: "/image/author1.jpeg", // Default author image
+    post_url: dbPost.post_url,
+    articleBody: dbPost.content,
+  };
+}
+
 export default function DashboardPage() {
-  const [posts, setPosts] = useState<BlogPost[]>(() => [...dummyBlogData]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch posts from the database on component mount
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/posts');
+      const data = await response.json();
+      
+      if (data.success) {
+        const transformedPosts = data.posts.map(transformDbPost);
+        setPosts(transformedPosts);
+      } else {
+        setError('Failed to fetch posts');
+      }
+    } catch (err) {
+      console.error('Error fetching posts:', err);
+      setError('Failed to fetch posts');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const startCreate = () => {
     setEditingId(null);
@@ -37,39 +78,111 @@ export default function DashboardPage() {
     setEditingId(null);
   };
 
-  const onDelete = (id: number) => {
-    if (typeof window !== "undefined" && window.confirm("Delete this post? This is a local-only change.")) {
-      setPosts((prev) => prev.filter((p) => p.id !== id));
+  const onDelete = async (id: number) => {
+    if (typeof window !== "undefined" && window.confirm("Delete this post? This action cannot be undone.")) {
+      try {
+        const response = await fetch('/api/delete-post', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id }),
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+          setPosts((prev) => prev.filter((p) => p.id !== id));
+        } else {
+          alert('Failed to delete post: ' + data.error);
+        }
+      } catch (error) {
+        console.error('Error deleting post:', error);
+        alert('Failed to delete post');
+      }
     }
   };
 
-  const onSave = (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string; articleBody?: string }) => {
-    const id = payload.id ?? (posts.length ? Math.max(...posts.map((p) => p.id)) + 1 : 1);
-    const slug = (payload.slug && payload.slug.trim()) || slugify(payload.title || "post-" + id);
-    const post: BlogPost = {
-      id,
-      title: payload.title,
-      description: payload.description,
-      author: payload.author,
-      date: payload.date,
-      authorImageUrl: payload.authorImageUrl,
-      post_url: `/blog/${slug}`,
-      articleBody: payload.articleBody ?? "",
-    };
+  const onSave = async (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string; articleBody?: string }) => {
+    try {
+      const slug = (payload.slug && payload.slug.trim()) || slugify(payload.title || "new-post");
+      const post_url = `/blog/${slug}`;
+      
+      const postData = {
+        id: payload.id,
+        title: payload.title,
+        content: payload.articleBody || "", // Map articleBody to content for database
+        author: payload.author,
+        date: payload.date,
+        description: payload.description,
+        post_url,
+        published: false, // Default to unpublished
+      };
 
-    setPosts((prev) => {
-      const idx = prev.findIndex((p) => p.id === id);
-      if (idx === -1) return [post, ...prev];
-      const copy = [...prev];
-      copy[idx] = post;
-      return copy;
-    });
+      const isEditing = payload.id !== undefined;
+      const url = isEditing ? '/api/edit-post' : '/api/add-post';
+      const method = isEditing ? 'PUT' : 'POST';
 
-    setIsCreating(false);
-    setEditingId(null);
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        const transformedPost = transformDbPost(data.post);
+        
+        setPosts((prev) => {
+          if (isEditing) {
+            return prev.map(p => p.id === transformedPost.id ? transformedPost : p);
+          } else {
+            return [transformedPost, ...prev];
+          }
+        });
+
+        setIsCreating(false);
+        setEditingId(null);
+      } else {
+        alert('Failed to save post: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Error saving post:', error);
+      alert('Failed to save post');
+    }
   };
 
   const editingPost = useMemo(() => posts.find((p) => p.id === editingId) || null, [editingId, posts]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+          <p className="mt-4 text-gray-600">Loading posts...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 mb-4">{error}</p>
+          <button 
+            onClick={fetchPosts} 
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -130,7 +243,7 @@ export default function DashboardPage() {
                       <td className="px-6 py-3 text-sm text-gray-700">{slug}</td>
                       <td className="px-6 py-3">
                         <div className="flex items-center justify-end gap-2">
-                          <Link href={existsInSeed ? `/blog/${slug}` : "/blog"} className="px-3 py-1.5 rounded-lg text-sm bg-gray-100 hover:bg-gray-200 text-gray-900">View</Link>
+                          <Link href={`/blog/${slug}`} className="px-3 py-1.5 rounded-lg text-sm bg-gray-100 hover:bg-gray-200 text-gray-900">View</Link>
                           <button onClick={() => startEdit(p.id)} className="px-3 py-1.5 rounded-lg text-sm bg-indigo-600 hover:bg-indigo-700 text-white">Edit</button>
                           <button onClick={() => onDelete(p.id)} className="px-3 py-1.5 rounded-lg text-sm bg-red-600 hover:bg-red-700 text-white">Delete</button>
                         </div>
