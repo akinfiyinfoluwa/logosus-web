@@ -6,10 +6,10 @@ import { eq } from 'drizzle-orm';
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, title, content, author, date, description, post_url, published } = body;
+    const { id, title, article_body, author, date, description, post_url, published } = body;
 
     // Validate required fields
-    if (!id || !title || !content || !author || !date || !description || !post_url) {
+    if (!id || !title || !article_body || !author || !date || !description || !post_url) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -20,7 +20,7 @@ export async function PUT(request: NextRequest) {
     const [updatedPost] = await db.update(blog)
       .set({
         title,
-        content, // This maps to article_body in the frontend
+        article_body, // This maps to article_body in the frontend
         author,
         date,
         description,
