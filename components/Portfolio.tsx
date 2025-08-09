@@ -205,7 +205,7 @@ export default function Portfolio() {
               Ready to start your next project?
             </p>
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 font-satoshi"
             >
               Get In Touch

@@ -20,8 +20,8 @@ const About = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're passionate about creating innovative solutions that help businesses thrive in the digital age. 
-            Our mission is to bridge the gap between technology and business success.
+            Founded by Emmanuel Akin-Ademola, we're passionate about creating innovative solutions that help businesses thrive in the digital age. 
+            Our mission is to bridge the gap between technology and business success through cutting-edge AI applications, full-stack development, and technical expertise.
           </p>
         </div>
       </section>
@@ -35,14 +35,16 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Founded with a vision to democratize technology, Logosus began as a small team of 
-                passionate developers and designers who believed that every business deserves access 
-                to cutting-edge digital solutions.
+                Founded by Emmanuel Akin-Ademola, a Software Engineer and Technical Writer based in Abuja, Nigeria, 
+                Logosus emerged from a vision to democratize technology and make cutting-edge digital solutions 
+                accessible to businesses of all sizes. With expertise spanning AI applications, full-stack development, 
+                and technical writing, Emmanuel brings a unique blend of technical prowess and communication skills.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Today, we've grown into a trusted partner for businesses worldwide, helping them 
-                navigate the complexities of digital transformation with innovative, scalable, and 
-                user-friendly solutions.
+                Drawing from experience at companies like Algolog and HackerNoon, where Emmanuel has implemented 
+                RAG solutions, developed AI-powered applications, and authored technical content for global audiences, 
+                Logosus represents the culmination of years of expertise in bridging the gap between complex technology 
+                and practical business solutions.
               </p>
             </div>
             <div className="flex justify-center">
@@ -111,43 +113,53 @@ const About = () => {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our diverse team of experts brings together years of experience in technology, 
-              design, and business strategy.
+              Leading with expertise in software engineering, AI applications, technical writing, and product management.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">JD</span>
+              <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden">
+                <img 
+                  src="https://media.licdn.com/dms/image/v2/D4D03AQE92dHK_Q7SVQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718880325978?e=1757548800&v=beta&t=pZ3-2CpURExcaViAfRHroIm_dNGl2mTMq9XxB9dDg-A"
+                  alt="Emmanuel Akin-Ademola"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">John Doe</h3>
-              <p className="text-blue-600 mb-4">CEO & Founder</p>
-              <p className="text-gray-600">
-                Visionary leader with 15+ years of experience in technology and business strategy.
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Emmanuel Akin-Ademola</h3>
+              <p className="text-blue-600 mb-4">Founder & CEO</p>
+              <p className="text-gray-600 mb-4">
+                Software Engineer and Technical Writer with expertise in AI applications, full-stack development, 
+                and RAG solutions. Currently Full Stack Engineer at Algolog and Tech Writer at HackerNoon.
               </p>
+              <div className="text-sm text-gray-500 space-y-1">
+                <p>📍 Abuja, Nigeria</p>
+                <p>🎓 Law Student & Mass Communication Graduate</p>
+                <p>💼 2K+ LinkedIn Followers</p>
+                <p>✍️ Published Technical Writer</p>
+              </div>
             </div>
             
             <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-24 h-24 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">JS</span>
+              <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden">
+                <img 
+                  src="https://media.licdn.com/dms/image/v2/D4D03AQH_WLu8KW0Jig/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731000088454?e=1757548800&v=beta&t=q3g5iMpbaWm7GPQO5UvzVa5yB0JTto_tG8dyvnmQV9A"
+                  alt="Adebimpe Akin-Ademola"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Jane Smith</h3>
-              <p className="text-blue-600 mb-4">CTO</p>
-              <p className="text-gray-600">
-                Technical expert specializing in scalable architecture and emerging technologies.
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Adebimpe Akin-Ademola</h3>
+              <p className="text-blue-600 mb-4">Product Manager</p>
+              <p className="text-gray-600 mb-4">
+                Experienced Product Manager specializing in strategic product development, user experience optimization, 
+                and cross-functional team leadership to deliver innovative solutions that meet market demands.
               </p>
-            </div>
-            
-            <div className="text-center bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">MB</span>
+              <div className="text-sm text-gray-500 space-y-1">
+                <p>🎯 Product Strategy & Development</p>
+                <p>🎓 Computer Engineering Graduate</p>
+                <p>📊 Market Research & Analysis</p>
+                <p>🚀 Product Launch & Growth</p>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Mike Brown</h3>
-              <p className="text-blue-600 mb-4">Head of Design</p>
-              <p className="text-gray-600">
-                Creative director focused on user experience and innovative design solutions.
-              </p>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import {
   DesktopIcon,
   ComponentInstanceIcon,
   GearIcon,
+  Pencil2Icon,
 } from "@radix-ui/react-icons";
 
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
@@ -38,13 +39,100 @@ const features = [
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
-    Icon: ComponentInstanceIcon,
-    name: "Chrome Extensions",
-    description: "Lightweight browser tools for automation, productivity, and workflow enhancement. Easy install, seamless integration.",
+    Icon: Pencil2Icon,
+    name: "Expert Platform Development",
+    description: "Specialized development services for popular platforms. We leverage the strengths of each platform to deliver exceptional results.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="chrome-extensions" className="absolute -right-20 -top-20 opacity-60" />,
+    background: <img alt="platform-development" className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    content: (
+      <div className="space-y-4 text-sm">
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>🔧</span>
+            <span>WordPress Development</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Custom WordPress themes, plugins, and e-commerce solutions. From simple blogs to complex business websites with WooCommerce integration.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">Custom Themes</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Plugin Development</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">WooCommerce</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">SEO Optimization</span>
+          </div>
+        </div>
+        
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>🎨</span>
+            <span>Webflow Design & Development</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Pixel-perfect Webflow websites with custom interactions and CMS integration. No-code solutions that look and feel premium.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">Custom Animations</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">CMS Integration</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Responsive Design</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">E-commerce</span>
+          </div>
+        </div>
+        
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>⚡</span>
+            <span>Wix Professional Setup</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Professional Wix websites with advanced customization, third-party integrations, and business automation features.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">Custom Design</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">App Integrations</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Business Tools</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Mobile Optimization</span>
+          </div>
+        </div>
+        
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>🛒</span>
+            <span>Shopify Store Development</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Complete Shopify e-commerce solutions with custom themes, app integrations, and conversion optimization.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">Custom Themes</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">App Development</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Payment Integration</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Analytics Setup</span>
+          </div>
+        </div>
+        
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>📐</span>
+            <span>Squarespace Customization</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Enhanced Squarespace websites with custom CSS, advanced layouts, and third-party service integrations.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">Custom CSS</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Layout Design</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Third-party Tools</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Portfolio Optimization</span>
+          </div>
+        </div>
+        
+        <div>
+          <div className="flex items-center gap-2 font-medium mb-2">
+            <span>🔄</span>
+            <span>Platform Migration</span>
+          </div>
+          <p className="text-muted-foreground mb-2">Seamless migration between platforms while preserving SEO rankings, content, and user experience.</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-muted px-2 py-1 rounded text-xs">SEO Preservation</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Content Migration</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Design Consistency</span>
+            <span className="bg-muted px-2 py-1 rounded text-xs">Zero Downtime</span>
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
     Icon: GearIcon,

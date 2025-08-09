@@ -2,8 +2,9 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { dummyBlogData } from '@/lib/blogs';
+import { dummyBlogData, BlogPost } from '@/lib/blogs';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -18,6 +19,65 @@ function getSlugFromUrl(url: string): string | null {
   }
 }
 
+function getRelatedPosts(currentPostId: number, allPosts: BlogPost[], limit: number = 3): BlogPost[] {
+  // Filter out the current post
+  const otherPosts = allPosts.filter(post => post.id !== currentPostId);
+  
+  // Shuffle the array randomly
+  const shuffled = [...otherPosts].sort(() => Math.random() - 0.5);
+  
+  // Return the first 'limit' posts
+  return shuffled.slice(0, limit);
+}
+
+function RelatedPosts({ relatedPosts }: { relatedPosts: BlogPost[] }) {
+  if (relatedPosts.length === 0) return null;
+
+  return (
+    <section className="max-w-3xl mx-auto px-4 md:px-6 mt-16 pt-16 border-t border-gray-200">
+      <h2 className="text-2xl md:text-3xl font-geist tracking-tight text-gray-900 mb-8">
+        Related Posts
+      </h2>
+      <div className="grid gap-6 md:grid-cols-1">
+        {relatedPosts.map((post) => (
+          <Link
+            key={post.id}
+            href={post.post_url}
+            className="group block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          >
+            <div className="flex items-start space-x-4">
+              <img
+                src={post.authorImageUrl}
+                alt={post.author}
+                className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-geist tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-200 mb-2">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 font-inter text-sm mb-3 line-clamp-2">
+                  {post.description}
+                </p>
+                <div className="flex items-center text-sm text-gray-500">
+                  <span className="font-inter">{post.author}</span>
+                  <span className="mx-2">•</span>
+                  <span className="font-inter">
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   //@ts-nocheck
@@ -28,6 +88,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post || !post.articleBody) {
     notFound();
   }
+
+  // Get related posts (3 random posts excluding the current one)
+  const relatedPosts = getRelatedPosts(post.id, dummyBlogData, 3);
 
   return (
     <div className="min-h-screen bg-white">
@@ -95,8 +158,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </ReactMarkdown>
           </div>
         </article>
+        
+        {/* Related Posts Section */}
+        <RelatedPosts relatedPosts={relatedPosts} />
       </main>
       <Footer />
     </div>
   );
 }
+

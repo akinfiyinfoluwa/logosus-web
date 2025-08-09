@@ -124,8 +124,9 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Take your React skills to the next level with these advanced techniques for building fast, scalable, and maintainable applications. Learn from the experts.",
     author: "Jane Smith",
     date: "2024-02-20",
-    authorImageUrl: "/image/author2.jpeg",
-    post_url: "/blog/mastering-react"
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
+    post_url: "/blog/mastering-react",
+    articleBody: ` ![Mastering React](https://images.unsplash.com/photo-1754430543609-aae159c530ef?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`
   },
   {
     id: 3,
@@ -133,7 +134,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Understand the core principles of UI/UX design to create more intuitive and user-friendly interfaces. This guide is tailored for developers who want to improve their design skills.",
     author: "Alex Johnson",
     date: "2024-03-10",
-    authorImageUrl: "/image/author3.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/ui-ux-design-principles"
   },
   {
@@ -142,7 +143,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Learn how to build robust, scalable APIs using Node.js and Express. This comprehensive guide covers best practices, security, and performance optimization.",
     author: "Sarah Wilson",
     date: "2024-03-25",
-    authorImageUrl: "/image/author4.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/scalable-apis-nodejs"
   },
   {
@@ -151,7 +152,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Explore how artificial intelligence is transforming the software development landscape. From code generation to automated testing, AI is changing everything.",
     author: "Michael Chen",
     date: "2024-04-05",
-    authorImageUrl: "/image/author5.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/ai-in-software-development"
   },
   {
@@ -160,7 +161,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Master the art of mobile-first design with these proven strategies. Learn how to create responsive, user-friendly interfaces that work seamlessly across all devices.",
     author: "Emily Rodriguez",
     date: "2024-04-18",
-    authorImageUrl: "/image/author6.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/mobile-first-design"
   },
   {
@@ -169,7 +170,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Discover advanced database optimization techniques to handle high-traffic applications. Learn about indexing, query optimization, and scaling strategies.",
     author: "David Kim",
     date: "2024-05-02",
-    authorImageUrl: "/image/author7.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/database-optimization"
   },
   {
@@ -178,7 +179,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Protect your web applications with these essential cybersecurity practices. Learn about common vulnerabilities and how to prevent them.",
     author: "Lisa Thompson",
     date: "2024-05-15",
-    authorImageUrl: "/image/author8.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/cybersecurity-best-practices"
   },
   {
@@ -187,7 +188,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Streamline your development workflow with DevOps automation. This guide covers CI/CD pipelines, containerization, and infrastructure as code.",
     author: "Robert Martinez",
     date: "2024-05-28",
-    authorImageUrl: "/image/author9.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/devops-automation-guide"
   },
   {
@@ -196,7 +197,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Learn how startups can leverage cloud computing to scale efficiently and cost-effectively. Compare different cloud providers and services.",
     author: "Amanda Foster",
     date: "2024-06-10",
-    authorImageUrl: "/image/author10.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/cloud-computing-startups"
   },
   {
@@ -205,7 +206,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Discover how Progressive Web Apps are bridging the gap between web and mobile applications. Learn the benefits and implementation strategies.",
     author: "James Parker",
     date: "2024-06-22",
-    authorImageUrl: "/image/author11.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/progressive-web-apps"
   },
   {
@@ -214,7 +215,7 @@ The future of web development in 2024 is about **speed, performance, personaliza
     description: "Understand when and how to implement microservices architecture. This comprehensive guide covers design patterns, challenges, and solutions.",
     author: "Rachel Green",
     date: "2024-07-05",
-    authorImageUrl: "/image/author12.jpeg",
+    authorImageUrl: "https://images.unsplash.com/photo-1750262701480-91fc40e726ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
     post_url: "/blog/microservices-architecture"
   }
 ];
