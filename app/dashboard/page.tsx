@@ -3,7 +3,7 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import { BlogPost, dummyBlogData } from "@/lib/blogs";
+import { BlogPost } from "@/lib/blogs";
 
 type EditorMode = "raw" | "preview";
 
@@ -17,17 +17,25 @@ function slugify(input: string): string {
     .replace(/^-|-$/g, "");
 }
 
+function truncateText(text: string, wordLimit: number): string {
+  const words = text.split(/\s+/);
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
+  return text;
+}
+
 // Transform database post to BlogPost format
 function transformDbPost(dbPost: any): BlogPost {
   return {
     id: dbPost.id,
     title: dbPost.title,
-    description: dbPost.description,
+    description: truncateText(dbPost.description, 30),
     author: dbPost.author,
     date: dbPost.date,
     authorImageUrl: "/image/author1.jpeg", // Default author image
     post_url: dbPost.post_url,
-    articleBody: dbPost.content,
+    article_body: dbPost.content,
   };
 }
 
@@ -103,20 +111,19 @@ export default function DashboardPage() {
     }
   };
 
-  const onSave = async (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string; articleBody?: string }) => {
+  const onSave = async (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string; article_body?: string; published?: boolean }) => {
     try {
       const slug = (payload.slug && payload.slug.trim()) || slugify(payload.title || "new-post");
       const post_url = `/blog/${slug}`;
-      
       const postData = {
         id: payload.id,
         title: payload.title,
-        content: payload.articleBody || "", // Map articleBody to content for database
+        article_body: payload.article_body || "", // Map article_body to content for database
         author: payload.author,
         date: payload.date,
         description: payload.description,
         post_url,
-        published: false, // Default to unpublished
+        published: payload.published ?? false,
       };
 
       const isEditing = payload.id !== undefined;
@@ -231,7 +238,7 @@ export default function DashboardPage() {
               <tbody className="bg-white divide-y divide-gray-100">
                 {posts.map((p) => {
                   const slug = p.post_url.split("/").filter(Boolean).pop() || "";
-                  const existsInSeed = dummyBlogData.some((d) => (d.post_url.split("/").filter(Boolean).pop() || "") === slug);
+                  const existsInSeed = false; // dummyBlogData.some((d:any) => (d.post_url.split("/").filter(Boolean).pop() || "") === slug);
                   return (
                     <tr key={p.id} className="hover:bg-gray-50">
                       <td className="px-6 py-3">
@@ -263,7 +270,7 @@ export default function DashboardPage() {
 function PostEditor({ initial, onCancel, onSave }: {
   initial?: BlogPost;
   onCancel: () => void;
-  onSave: (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string }) => void;
+  onSave: (payload: Omit<BlogPost, "id" | "post_url"> & { id?: number; slug?: string; published?: boolean }) => void;
 }) {
   const [title, setTitle] = useState(initial?.title ?? "");
   const [description, setDescription] = useState(initial?.description ?? "");
@@ -277,8 +284,9 @@ function PostEditor({ initial, onCancel, onSave }: {
     }
     return "";
   });
-  const [body, setBody] = useState(initial?.articleBody ?? "");
+  const [body, setBody] = useState(initial?.article_body ?? "");
   const [mode, setMode] = useState<EditorMode>("raw");
+  const [published, setPublished] = useState(initial ? initial.published ?? false : false);
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -334,7 +342,8 @@ function PostEditor({ initial, onCancel, onSave }: {
       date: date.trim(),
       authorImageUrl: authorImageUrl.trim() || "/image/author1.jpeg",
       slug: slug.trim() || slugify(title),
-      articleBody: body,
+      article_body: body,
+      published,
     });
   };
 

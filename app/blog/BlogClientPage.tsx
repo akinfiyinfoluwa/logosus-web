@@ -193,3 +193,5 @@ const BlogClientPage: React.FC<BlogClientPageProps> = ({ posts }) => {
 };
 
 export default BlogClientPage;
+
+// BlogClientPage expects posts as a prop. Make sure parent fetches from /api/posts and passes posts.

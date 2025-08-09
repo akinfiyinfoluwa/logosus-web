@@ -13,7 +13,7 @@ function transformDbPost(dbPost: any): BlogPost {
     date: dbPost.date,
     authorImageUrl: "/image/author1.jpeg", // Default author image
     post_url: dbPost.post_url,
-    articleBody: dbPost.content,
+    article_body: dbPost.content,
   };
 }
 

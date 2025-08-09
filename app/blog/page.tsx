@@ -1,20 +1,40 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BlogPost, dummyBlogData } from '@/lib/blogs';
+import { BlogPost } from '@/lib/blogs';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
 const POSTS_PER_PAGE = 6;
 
 const BlogPage: React.FC = () => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  
-  const totalPages = Math.ceil(dummyBlogData.length / POSTS_PER_PAGE);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/posts');
+        const data = await res.json();
+        if (data.success) {
+          setPosts(data.posts);
+        }
+      } catch (e) {
+        setPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
-  const currentPosts = dummyBlogData.slice(startIndex, endIndex);
+  const currentPosts = posts.slice(startIndex, endIndex);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -85,61 +105,69 @@ const BlogPage: React.FC = () => {
             initial="hidden"
             animate="visible"
           >
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {currentPosts.map((post) => (
-                <motion.div key={post.id} variants={itemVariants}>
-                  <BlogPostCard post={post} />
-                </motion.div>
-              ))}
-            </div>
+            {loading ? (
+              <div className="py-10 text-center">
+                <span className="loader"></span>
+              </div>
+            ) : (
+              <>
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {currentPosts.map((post) => (
+                    <motion.div key={post.id} variants={itemVariants}>
+                      <BlogPostCard post={post} />
+                    </motion.div>
+                  ))}
+                </div>
 
-            {/* Pagination */}
-            <div className="mt-16 flex justify-center items-center space-x-4">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={`px-4 py-2 rounded-lg font-satoshi ${
-                  currentPage === 1
-                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700 transition-colors'
-                }`}
-              >
-                Previous
-              </button>
-
-              <div className="flex space-x-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                {/* Pagination */}
+                <div className="mt-16 flex justify-center items-center space-x-4">
                   <button
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    className={`px-4 py-2 rounded-lg font-satoshi transition-colors ${
-                      currentPage === page
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-4 py-2 rounded-lg font-satoshi ${
+                      currentPage === 1
+                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-blue-600 text-white hover:bg-blue-700 transition-colors'
                     }`}
                   >
-                    {page}
+                    Previous
                   </button>
-                ))}
-              </div>
 
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`px-4 py-2 rounded-lg font-satoshi ${
-                  currentPage === totalPages
-                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700 transition-colors'
-                }`}
-              >
-                Next
-              </button>
-            </div>
+                  <div className="flex space-x-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={`px-4 py-2 rounded-lg font-satoshi transition-colors ${
+                          currentPage === page
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
 
-            {/* Page Info */}
-            <div className="mt-8 text-center text-gray-600 font-inter">
-              Showing {startIndex + 1}-{Math.min(endIndex, dummyBlogData.length)} of {dummyBlogData.length} posts
-            </div>
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-4 py-2 rounded-lg font-satoshi ${
+                      currentPage === totalPages
+                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-blue-600 text-white hover:bg-blue-700 transition-colors'
+                    }`}
+                  >
+                    Next
+                  </button>
+                </div>
+
+                {/* Page Info */}
+                <div className="mt-8 text-center text-gray-600 font-inter">
+                  Showing {startIndex + 1}-{Math.min(endIndex, posts.length)} of {posts.length} posts
+                </div>
+              </>
+            )}
           </motion.div>
         </section>
       </main>
@@ -203,7 +231,7 @@ const getSlugFromUrl = (url: string): string | null => {
 
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const slug = getSlugFromUrl(post.post_url);
-  const linkHref = post.articleBody && slug ? `/blog/${slug}` : '/blog';
+  const linkHref = post.article_body && slug ? `/blog/${slug}` : '/blog';
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 hover:shadow-xl border border-gray-100">
       <div className="p-6">

@@ -1,7 +1,7 @@
 import { integer, text, boolean, pgTable, serial } from "drizzle-orm/pg-core";
 
 export const blog = pgTable("blog", {
-  id: serial("id").primaryKey(),
+  id: serial("id").primaryKey().notNull(),
   title: text("title").notNull(),
   article_body: text("article_body").notNull(), // main blog content
   author: text("author").notNull(),

@@ -5,10 +5,10 @@ import { blog } from '@/database/schema';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, content, author, date, description, post_url, published = false } = body;
+    const { title, article_body, author, date, description, post_url, published = false } = body;
 
     // Validate required fields
-    if (!title || !content || !author || !date || !description || !post_url) {
+    if (!title || !article_body || !author || !date || !description || !post_url) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     // Insert the new blog post (ID will be auto-generated)
     const [newPost] = await db.insert(blog).values({
       title,
-      content, // This maps to articleBody in the frontend
+      article_body, // This maps to article_body in the frontend
       author,
       date,
       description,

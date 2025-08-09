@@ -20,7 +20,7 @@ export async function PUT(request: NextRequest) {
     const [updatedPost] = await db.update(blog)
       .set({
         title,
-        content, // This maps to articleBody in the frontend
+        content, // This maps to article_body in the frontend
         author,
         date,
         description,

@@ -1,11 +1,30 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { dummyBlogData, BlogPost } from '../lib/blogs';
+import { BlogPost } from '../lib/blogs';
 
 const BlogSection: React.FC = () => {
-  const blogPosts = dummyBlogData.slice(0, 3);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/posts');
+        const data = await res.json();
+        if (data.success) {
+          setBlogPosts(data.posts.slice(0, 3));
+        }
+      } catch (e) {
+        setBlogPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -118,7 +137,7 @@ const getSlugFromUrl = (url: string): string | null => {
 
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   const slug = getSlugFromUrl(post.post_url);
-  const linkHref = post.articleBody && slug ? `/blog/${slug}` : '/blog';
+  const linkHref = post.article_body && slug ? `/blog/${slug}` : '/blog';
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
       <div className="p-6">

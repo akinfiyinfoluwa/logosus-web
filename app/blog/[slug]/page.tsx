@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 ),
               }}
             >
-              {post.articleBody || post.description}
+              {post.article_body || post.description}
             </ReactMarkdown>
           </div>
 

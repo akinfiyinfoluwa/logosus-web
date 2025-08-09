@@ -15,7 +15,7 @@ export async function fetchAllPosts(): Promise<BlogPost[]> {
         date: dbPost.date,
         authorImageUrl: "/image/author1.jpeg", // Default author image
         post_url: dbPost.post_url,
-        articleBody: dbPost.content,
+        article_body: dbPost.content,
       }));
     }
     
@@ -36,7 +36,7 @@ export async function createPost(post: Omit<BlogPost, 'id' | 'authorImageUrl'>):
       },
       body: JSON.stringify({
         title: post.title,
-        article_body: post.articleBody || '',
+        article_body: post.article_body || '',
         author: post.author,
         date: post.date,
         description: post.description,
@@ -56,7 +56,7 @@ export async function createPost(post: Omit<BlogPost, 'id' | 'authorImageUrl'>):
         date: data.post.date,
         authorImageUrl: "/image/author1.jpeg",
         post_url: data.post.post_url,
-        articleBody: data.post.content,
+        article_body: data.post.content,
       };
     }
     
@@ -78,7 +78,7 @@ export async function updatePost(post: BlogPost): Promise<BlogPost | null> {
       body: JSON.stringify({
         id: post.id,
         title: post.title,
-        article_body: post.articleBody || '',
+        article_body: post.article_body || '',
         author: post.author,
         date: post.date,
         description: post.description,
@@ -98,7 +98,7 @@ export async function updatePost(post: BlogPost): Promise<BlogPost | null> {
         date: data.post.date,
         authorImageUrl: "/image/author1.jpeg",
         post_url: data.post.post_url,
-        articleBody: data.post.content,
+        article_body: data.post.content,
       };
     }
     
