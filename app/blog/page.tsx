@@ -49,10 +49,16 @@ const BlogPage: React.FC = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-          <div className="max-w-screen-xl mx-auto px-4 md:px-8 text-center">
+        <section 
+          className="py-20 bg-cover bg-center bg-no-repeat relative"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)'
+          }}
+        >
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="max-w-screen-xl mx-auto px-4 md:px-8 text-center relative z-10">
             <motion.h1 
-              className="text-5xl md:text-6xl font-geist tracking-tighter text-gray-900 mb-6"
+              className="text-5xl md:text-6xl font-geist tracking-tighter text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -60,7 +66,7 @@ const BlogPage: React.FC = () => {
               Our Blog
             </motion.h1>
             <motion.p 
-              className="text-xl text-gray-600 font-inter max-w-3xl mx-auto"
+              className="text-xl text-gray-200 font-inter max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}

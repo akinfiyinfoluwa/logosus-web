@@ -9,69 +9,39 @@ const testimonials = [
   [
     {
       content:
-        "FinanceFlow has completely transformed how I handle my finances. The automation makes everything so easy, I no longer worry about missing any payments or filings.",
+        "Logosus has created the most intuitive and friendly website for our readers and writers. The design is clean, the navigation is smooth, and the overall experience is just delightful.",
       author: {
-        name: "Sheryl Berge",
-        role: "CEO at Lynch LLC",
+        name: "Roland Bayode",
+        role: "Editor in Chief at Gazette Africa",
         image:
-          "https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80",
+          "https://media.licdn.com/dms/image/v2/C4E03AQEUWtP8OKM-Pg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1620756793101?e=1757548800&v=beta&t=ONMKb43CqmkhotKiBclYiwink0aynQ_FvXXmPrTToKU",
       },
-    },
+    },],
+    [
     {
       content:
-        "I was struggling to keep up with all the details, but FinanceFlow automated everything for me. It's a relief knowing everything is taken care of efficiently.",
+        "We were hoping to create the best platform for our community, and Logosus delivered beyond our expectations. The website is not only beautiful but also incredibly functional.",
       author: {
-        name: "Amy Hahn",
-        role: "Director at Velocity Industries",
+        name: "Orukotan Eniola",
+        role: "Editor in chief at ViralNaija",
         image:
-          "https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80",
+          "https://media.licdn.com/dms/image/v2/D4D03AQEWYc7h3-H4bw/profile-displayphoto-shrink_800_800/B4DZXYE2KqG4Ag-/0/1743086906181?e=1757548800&v=beta&t=eRhhKnAHQg2fD2REbl2Sh26_u23SA7ivu73wO7J8a4E",
       },
     },
   ],
-  [
+    [
     {
       content:
-        "The automation features of FinanceFlow have made managing my company's finances a breeze. The time saved has been invaluable, and I no longer stress over tax season.",
+        "We had a problem with third party ecommerce applications, but Logosus provided us with a custom solution that not only solved our problem but also enhanced our user experience. Their team is responsive and professional.",
       author: {
-        name: "Leland Kiehn",
-        role: "Founder of Kiehn and Sons",
+        name: "Mojisola Akin-Ademola",
+        role: "CEO at Winn's Couture",
         image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      },
-    },
-    {
-      content:
-        "With FinanceFlow, I no longer need to manually track every expense. The automation does it all for me, giving me more time to focus on growing my business.",
-      author: {
-        name: "Erin Powlowski",
-        role: "COO at Armstrong Inc",
-        image:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-19/449181645_1263272565081942_349334778328774695_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43NDcuYzIifQ&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2QFExF03Y1_2l-R5EuHIpUOSIMNWgSQzdqN_YCPV-Ui2MpvaO__FdHcS8dr28fbQjLZtNANFMAEkQoa167lqCjHw&_nc_ohc=IXFhZ-5fCrAQ7kNvwENpM-o&_nc_gid=4kIkcf0hV0al9Nb5rxu5Gg&edm=APoiHPcBAAAA&ccb=7-5&oh=00_AfWxO7wbqpD7FbWxf98NpC_5AkjlzcS-GFSVwZ7d4wKsVw&oe=689D50A0&_nc_sid=22de04",
       },
     },
   ],
-  [
-    {
-      content:
-        "FinanceFlow made it so easy to automate my company's financial workflows. I'm no longer bogged down with administrative tasks, and I feel much more confident in my financial management.",
-      author: {
-        name: "Peter Renolds",
-        role: "Founder of West Inc",
-        image:
-          "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-      },
-    },
-    {
-      content:
-        "I've been waiting for a response from support for weeks now, but haven't received any communication. It's been incredibly frustrating and has affected my ability to resolve urgent issues.",
-      author: {
-        name: "Amy Hahn",
-        role: "Director at Velocity Industries",
-        image:
-          "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-      },
-    },
-  ],
+ 
 ];
 
 
